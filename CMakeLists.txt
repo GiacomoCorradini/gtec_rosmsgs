@@ -1,48 +1,40 @@
-cmake_minimum_required(VERSION 2.8.3)
-project(gtec_msgs)
+cmake_minimum_required(VERSION 3.8)
+project(gtec_rosmsgs)
 
-set(CMAKE_AUTOMOC ON)
-set(CMAKE_AUTOUIC ON)
+list(INSERT CMAKE_MODULE_PATH 0 "${CMAKE_CURRENT_SOURCE_DIR}/cmake")
 
-SET(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -std=c++11")
+if(CMAKE_COMPILER_IS_GNUCXX OR CMAKE_CXX_COMPILER_ID MATCHES "Clang")
+  add_compile_options(-Wall -Wextra -Wpedantic)
+endif()
 
-add_definitions(-std=c++11)
+find_package(ament_cmake REQUIRED)
+find_package(pluginlib REQUIRED)
+find_package(rclcpp REQUIRED)
+find_package(rclpy REQUIRED)
+find_package(std_msgs REQUIRED)
 
-## Find catkin macros and libraries
-## if COMPONENTS list like find_package(catkin REQUIRED COMPONENTS xyz)
-## is used, also find other catkin packages
-find_package(catkin REQUIRED COMPONENTS
-  roscpp
-  rospy
-  std_msgs
-  message_generation
+find_package(builtin_interfaces REQUIRED)
+find_package(rosidl_default_generators REQUIRED)
+
+rosidl_generate_interfaces(${PROJECT_NAME}
+  DEPENDENCIES std_msgs
+  DEPENDENCIES builtin_interfaces
+  ADD_LINTER_TESTS
+  msg/GenericRanging.msg
+  msg/Ranging.msg
+  msg/UWBRanging.msg
+  msg/PozyxRanging.msg
+  msg/DWRanging.msg
+  msg/RangingDiff.msg
+  msg/PozyxRangingWithCir.msg
+  msg/ESP32S2FTMFrame.msg
+  msg/ESP32S2FTMRanging.msg
+  msg/ESP32S2FTMRangingExtra.msg
+  msg/RadarCube.msg
+  msg/RadarRangeAzimuth.msg
+  msg/RadarRangeDoppler.msg
 )
 
-## Generate messages in the 'msg' folder
-add_message_files(
-  FILES
-  GenericRanging.msg
-  Ranging.msg
-  UWBRanging.msg
-  DWRanging.msg
-  PozyxRanging.msg
-  RangingDiff.msg
-  PozyxRangingWithCir.msg
-  ESP32S2FTMFrame.msg
-  ESP32S2FTMRanging.msg
-  ESP32S2FTMRangingExtra.msg
-  RadarCube.msg
-  RadarRangeAzimuth.msg
-  RadarRangeDoppler.msg
- )
+ament_export_dependencies(rosidl_default_runtime)
 
-## Generate added messages and services with any dependencies listed here
-generate_messages(
-  DEPENDENCIES
-  std_msgs
-)
-
-
-catkin_package(
-
-)
+ament_package()
