@@ -1,4 +1,6 @@
-# [Custom messages](https://docs.ros.org/en/humble/Tutorials/Beginner-Client-Libraries/Custom-ROS2-Interfaces.html)
+The original repository is: https://github.com/GTEC-UDC/rosmsgs, some changes have been made in order to be able to compile it for [ROS2 Humble](https://docs.ros.org/en/humble/index.html)
+
+# OLD README
 
 **NOTE:** This repository is related with the next scientific work:
 
@@ -20,4 +22,10 @@ This project contains a set of custom ROS message definitions used in several GT
 
 ```cmake
 colcon build
+```
+
+To use the messages the source is needed:
+
+```sh
+source install/setup.bash
 ```
