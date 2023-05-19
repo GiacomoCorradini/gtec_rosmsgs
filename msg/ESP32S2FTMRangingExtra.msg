@@ -4,4 +4,4 @@ int32 rtt_raw
 float32 dist_est
 float32 own_est
 int32 num_frames
-gtec_rosmsgs/ESP32S2FTMFrame[] frames
+rosmsgs/ESP32S2FTMFrame[] frames
