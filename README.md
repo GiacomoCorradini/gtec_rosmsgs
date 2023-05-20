@@ -19,3 +19,9 @@ To use the messages:
 ```sh
 source install/setup.bash
 ```
+
+You can also include the source into your bashrc adding the following line:
+
+```sh
+source ~/rosmsgs/install/setup.bash
+```
