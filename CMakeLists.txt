@@ -29,6 +29,7 @@ rosidl_generate_interfaces(${PROJECT_NAME}
   msg/RadarCube.msg
   msg/RadarRangeAzimuth.msg
   msg/RadarRangeDoppler.msg
+  msg/RangingArray.msg
 )
 
 ament_export_dependencies(rosidl_default_runtime)
